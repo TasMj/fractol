@@ -6,38 +6,58 @@
 #    By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:33:21 by tmejri            #+#    #+#              #
-#    Updated: 2022/11/29 19:21:39 by tmejri           ###   ########.fr        #
+#    Updated: 2022/11/30 13:28:36 by tmejri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= fractol
+NAME		= fractol
 
-SRCS			= fractol.c 
+MLX_DIR 	= ./minilibx-linux
 
-OBJS			= ${SRCS:.c=.o}
+MLX		= ./minilibx-linux/libmlx.a
 
-CC				= gcc
-RM				= rm -f
-HDR_PATH		= include
-MLX 			= make -C ./minilibx-linux
-MLX_HDR			= minilibx-linux/
-CFLAGS			= -Wall -Wextra -Werror -g3 -I ${HDR_PATH} -I ${MLX_HDR}
+SRCS		= 
 
-all:			${NAME}
+OBJS		= ${SRCS:.c=.o}
 
-%.o: %.c
-## A REFAIRE
+RM		= rm -f
 
-$(NAME):		$(OBJ)
-				
-				@$(CC) ${CFLAGS} ${SRCS} -L ${MLX_HDR} -lmlx_Linux -L -lXext -lX11 -lm -lz -o $(NAME)
+CC		= gcc
 
-clean:
-				${RM} ${OBJS}
+FLAGS		= -Wall -Wextra -Werror -g3
 
-fclean:			clean
-				${RM} ${NAME}
+FLAGS_LIB	= -lXext -lX11
 
-re:				fclean ${NAME}
+all		: ${NAME}
 
-.PHONY:			all clean fclean re
+.c.o		:
+		  @${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+
+${MLX}		:
+		  @echo "\033[35m----Building MLX----"
+		  @make -sC ${MLX_DIR}
+		  @echo "OK"
+
+${NAME}		: ${OBJS} ${MLX}
+		  @echo "\033[34m----Compiling----"
+		  @${CC} ${FLAGS} ${OBJS} -L ${MLX_DIR} -lmlx -lm ${FLAGS_LIB} -o ${NAME}
+		  @echo "OK"
+
+clean		:
+		  @echo "\033[31m----Cleaning MLX----"
+		  @make clean -sC ${MLX_DIR}
+		  @echo "OK"
+		  @echo "\033[31m----Cleaning objects----"
+		  @${RM} ${OBJS}
+		  @echo "OK"
+
+fclean		: clean
+		  @echo "\033[33m----Cleaning all----"
+		  @${RM} ${NAME}
+		  @${RM} ${LIBFT}
+		  @${RM} ${MLX}
+		  @echo "OK"
+
+re		: fclean all
+
+.PHONY		: all clean fclean re
