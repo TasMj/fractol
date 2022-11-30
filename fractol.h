@@ -6,7 +6,7 @@
 /*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/11/29 19:19:57 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/11/30 15:05:31 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FRACTOL_H
 
 #include <stdlib.h>
-#include "../minilibx-linux/mlx.h"
+#include "./mlx_linux/mlx.h"
 
 
 

@@ -6,18 +6,23 @@
 /*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:08:21 by tmejri            #+#    #+#             */
-/*   Updated: 2022/11/29 19:20:20 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/11/30 15:09:20 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
+#include "fractol.h"
 
-int main(void)
+int	main(void)
 {
-	void	*mlx_ptr;
+	void	*mlx;
+	void	*mlx_win;
 
-	mlx_ptr = mlx_init();
-	mlx_destroy_display(mlx_ptr);
-	free(mlx_ptr);
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_win += 1;
+	mlx_win -= 1;
+	
+	mlx_loop(mlx);
+	
+	return (0);
 }
-    
