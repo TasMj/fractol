@@ -6,13 +6,13 @@
 #    By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:33:21 by tmejri            #+#    #+#              #
-#    Updated: 2022/11/30 15:05:07 by tmejri           ###   ########.fr        #
+#    Updated: 2022/12/08 14:02:26 by tmejri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= fractol
 
-SRCS		= fractol.c
+SRCS		= fractol.c put_pixel.c 
 
 OBJ		= ${SRCS:.c=.o}
 
