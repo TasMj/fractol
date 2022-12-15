@@ -15,7 +15,7 @@
 
 #include <stdlib.h>
 #include <math.h>
-#include "./mlx_linux/mlx.h"
+#include "./mlx/mlx.h"
 
 typedef struct	s_data 
 {
