@@ -6,13 +6,13 @@
 #    By: tas <tas@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:33:21 by tmejri            #+#    #+#              #
-#    Updated: 2022/12/15 12:48:13 by tas              ###   ########.fr        #
+#    Updated: 2022/12/19 16:48:29 by tas              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= fractol
 
-SRCS		= fractol.c
+SRCS		= fractol.c window.c image.c colors.c mandelbrot.c 
 
 OBJ		= ${SRCS:.c=.o}
 
