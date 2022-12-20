@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/19 19:42:11 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/20 16:29:59 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef	struct s_fractal
 	double	y_max;
 	double	zoom;
 	double	iteration_max;
+	double	image_x;
+	double	image_y;
 }				t_fractal;
 
 
@@ -65,14 +67,13 @@ typedef struct	s_complex
 
 #endif
 
-void    	put_pixel(t_data *data, int x, int y, int color);
+void   		put_pixel(t_data *data, int x, int y, int color);
 void		init_window(void);
 t_mlx		init_image(t_data img, t_mlx mlx);
 void		draw_image(t_data img, int x, int y);
-void		mandelbrot(double x, double y);
+int		mandelbrot(double x, double y);
 t_fractal   init_mandelbrot(t_fractal f_mandelbrot);
-void		calculate_image(t_data img, t_fractal f_m);
-void	draw_frac(t_data img);
+void		calculate_image(t_data *img, t_fractal f_m);
 
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:43:27 by tas               #+#    #+#             */
-/*   Updated: 2022/12/19 19:43:35 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/20 16:40:45 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void    init_window(void)
 	img.img = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-	calculate_image(img, f_m);
-	// draw_image(img, 0, 0);
+	calculate_image(&img, f_m);
+	//draw_image(img, 0, 0);
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, img.img, 0, 0);
-	mlx_loop(mlx.mlx);	
+	mlx_loop(mlx.mlx);
 }
