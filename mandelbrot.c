@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:47:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/19 18:04:16 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/19 19:42:57 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_fractal   init_mandelbrot(t_fractal f_mandelbrot)
     f_mandelbrot.y_max = 1.2;
     f_mandelbrot.zoom = 100;
     f_mandelbrot.iteration_max = 50;
-    return (f_m);
+    return (f_mandelbrot);
 }
 
 void calculate_image(t_data img, t_fractal f_m)
@@ -54,7 +54,7 @@ void calculate_image(t_data img, t_fractal f_m)
 	        	i++;
 	        }
             if (i == f_m.iteration_max)
-    			put_pixel(&img, x, y, 0x00FFFF00);
+    			put_pixel(&img, img.x, img.y, 0x00FFFF00);
             y++;
         }
         x++;
@@ -63,7 +63,7 @@ void calculate_image(t_data img, t_fractal f_m)
 }
 
 
-void	mandelbrot(t_data img, double x, double y)
+void	mandelbrot(double x, double y)
 {
 	t_complex	c;
 	t_complex	z;
@@ -75,6 +75,7 @@ void	mandelbrot(t_data img, double x, double y)
 	c.i = y;
 	z.r = 0;
 	z.i = 0;
+    i = 0;
 	iteration_max = 50;
 	while ((pow(z.r, 2) + pow(z.i, 2)) < 4 && i < iteration_max)
 	{
