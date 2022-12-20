@@ -6,7 +6,7 @@
 /*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:47:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/20 16:59:51 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/20 19:08:38 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ void calculate_image(t_data *img, t_fractal f_m)
         while (y < HEIGHT)
         {         
 
-			fprintf(stderr, "x= %f - y = %f", x, y);
+			// fprintf(stderr, "x= %f - y = %f", x, y);
 
-			fprintf(stderr, "newx= %f - newy = %f\n", (x + WIDTH/2 - 5) / 100, (y + HEIGHT/2 + 5) / 100);
+			// fprintf(stderr, "newx= %f - newy = %f\n", (x + WIDTH/2 - 5) / 100, (y + HEIGHT/2 + 5) / 100);
+			// if (mandelbrot(((x + WIDTH/2) / WIDTH/2 ), (y + HEIGHT/2 ) /(HEIGHT/2)) == 50)
 			if (mandelbrot(((x + WIDTH/2) / WIDTH/2 ), (y + HEIGHT/2 ) /(HEIGHT/2)) == 50)
 			{
     			put_pixel(img, x, y, 0x00FF7F7F);

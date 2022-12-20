@@ -6,7 +6,7 @@
 /*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:43:27 by tas               #+#    #+#             */
-/*   Updated: 2022/12/20 16:40:45 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/20 17:12:14 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void    init_window(void)
 {
-	t_mlx	mlx;
-	t_data	img;
+	t_mlx		mlx;
+	t_data		img;
 	t_fractal	f_m;
 
 	mlx.mlx = mlx_init();
