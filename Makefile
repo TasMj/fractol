@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tas <tas@student.42.fr>                    +#+  +:+       +#+         #
+#    By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:33:21 by tmejri            #+#    #+#              #
-#    Updated: 2022/12/19 16:48:29 by tas              ###   ########.fr        #
+#    Updated: 2022/12/21 10:43:28 by tmejri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= fractol
 
-SRCS		= fractol.c window.c image.c colors.c mandelbrot.c 
+SRCS		= fractol.c window.c image.c colors.c mandelbrot.c julia.c
 
 OBJ		= ${SRCS:.c=.o}
 

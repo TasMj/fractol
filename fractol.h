@@ -6,7 +6,7 @@
 /*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/20 16:29:59 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/21 11:53:35 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,21 @@ typedef struct	s_complex
 
 #endif
 
+void	cadre(t_data *img, int x, int y);
+
 void   		put_pixel(t_data *data, int x, int y, int color);
 void		init_window(void);
 t_mlx		init_image(t_data img, t_mlx mlx);
 void		draw_image(t_data img, int x, int y);
-int		mandelbrot(double x, double y);
+
+// Mandelbrot
+void		mandelbrot(t_data *img, double x, double y);
 t_fractal   init_mandelbrot(t_fractal f_mandelbrot);
-void		calculate_image(t_data *img, t_fractal f_m);
+void		calculate_mandelbrot(t_data *img, t_fractal f_m);
 
 
-
-
+// Julia
+t_fractal   init_julia(t_fractal f_julia);
+void		julia(t_data *img, double x, double y);
+void		calculate_julia(t_data *img, t_fractal f_j);
 
