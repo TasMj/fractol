@@ -6,7 +6,7 @@
 /*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:47:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/21 12:00:08 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/21 12:58:29 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,7 @@ void calculate_mandelbrot(t_data *img, t_fractal f_m)
     }
 }
 
-// if (mandelbrot(((x + WIDTH/2) / WIDTH/2 ), (y + HEIGHT/2 ) /(HEIGHT/2)) == 50)
 // fprintf(stderr, "x= %f - y = %f", x, y);
-// fprintf(stderr, "newx= %f - newy = %f\n", ((WIDTH / f_m.image_x) + x) / 100, ((HEIGHT / f_m.image_y) + y) / 100);
 
 void	mandelbrot(t_data *img, double x, double y)
 {
@@ -71,4 +69,6 @@ void	mandelbrot(t_data *img, double x, double y)
 		put_pixel(img, x, y, 0x0077B5FE);
 		printf("A\n");
 	}
+	// printf("B\n");
+	
 }

@@ -6,7 +6,7 @@
 /*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:35:32 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/21 12:03:31 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/21 13:42:39 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ t_fractal   init_julia(t_fractal f_julia)
 
 void calculate_julia(t_data *img, t_fractal f_j)
 {
-    double x = 0;
-    double y = 0;
+    double x = img->x;
+    double y = img->y;
 	f_j = init_julia(f_j);
 	while (x < WIDTH)
     {
         while (y < HEIGHT)
         {
-			julia(img, (((f_j.image_x / (WIDTH)) + x) / 10), ((f_j.image_y / (HEIGHT)) + y) / 10);
+			// julia(img, ((f_j.image_x / WIDTH) + x) / 10, ((f_j.image_y / HEIGHT) + y) / 10);
+			julia(img, (x / WIDTH) * f_j.image_x * 100, (y / HEIGHT) * f_j.image_y * 100);
 			y++;
 		}
 		y = 0;
@@ -65,8 +66,7 @@ void	julia(t_data *img, double x, double y)
 	if (i == 150)
 	{
 		put_pixel(img, x, y, 0x0077B5FE);
-		printf("A\n");
 	}
-	// printf("B\n");
-	// put_pixel(img, x, y, 0x00d3a2e4);
+	img->x = z.r;
+	img->y = z.i;
 }
