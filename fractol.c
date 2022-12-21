@@ -6,7 +6,7 @@
 /*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:08:21 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/21 12:58:45 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/21 17:14:04 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,22 @@ int	main(void)
 								&img.endian);
 	
 	cadre(&img, 0, 0);
-
 	// calculate_mandelbrot(&img, f_m);
-	
 	calculate_julia(&img, f_j);
-	
 	// draw_image(img, 0, 0);
 	
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, img.img, 0, 0);
+
+	// FAIRE HOOK
+	
 	mlx_loop(mlx.mlx);
+
+	
+	//FREE TOUT A LA FIN
+	mlx_destroy_image(mlx.mlx, img.img);
+	mlx_destroy_window(mlx.mlx, mlx.mlx_win);
+	mlx_destroy_display(mlx.mlx);
+	free(mlx.mlx);	
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/21 11:53:35 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/21 17:11:37 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ void	cadre(t_data *img, int x, int y);
 
 void   		put_pixel(t_data *data, int x, int y, int color);
 void		init_window(void);
+// void    init_window(t_mlx mlx, t_data img);
+
 t_mlx		init_image(t_data img, t_mlx mlx);
 void		draw_image(t_data img, int x, int y);
 

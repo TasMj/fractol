@@ -6,7 +6,7 @@
 #    By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:33:21 by tmejri            #+#    #+#              #
-#    Updated: 2022/12/21 10:43:28 by tmejri           ###   ########.fr        #
+#    Updated: 2022/12/21 17:00:30 by tmejri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ fclean:
 	@echo "$(GREEN)Supressing libraries files$(CYAN)"
 	@rm -rf $(OBJ_PATH)
 	@rm -f $(NAME)
+	@rm -f $(OBJ)
 
 re: fclean
 	@$(MAKE) all -j
