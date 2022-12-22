@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:45:55 by tas               #+#    #+#             */
-/*   Updated: 2022/12/21 13:17:31 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/22 10:40:15 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    put_pixel(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	draw_image(t_data img, int x, int y)
+int	draw_image(t_data img, int x, int y)
 {
 	while (y < HEIGHT)
 	{
@@ -34,6 +34,7 @@ void	draw_image(t_data img, int x, int y)
 		x = 0;
 		y++;
 	}
+	return (0);
 }
 
 
@@ -53,3 +54,11 @@ void	cadre(t_data *img, int x, int y) // A SUPPR
 		y++;
 	}
 }
+
+// int	draw_fractal(t_mlx *mlx,t_data *img, t_fractal f)
+// {
+// 	calculate_julia(img,f);
+// 	mlx_put_image_to_window(&mlx->mlx, &mlx->mlx_win, &img->img, 0, 0);
+
+// 	return (0);
+// }

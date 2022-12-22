@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:35:32 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/21 13:42:39 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/22 09:55:46 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void calculate_julia(t_data *img, t_fractal f_j)
         while (y < HEIGHT)
         {
 			// julia(img, ((f_j.image_x / WIDTH) + x) / 10, ((f_j.image_y / HEIGHT) + y) / 10);
-			julia(img, (x / WIDTH) * f_j.image_x * 100, (y / HEIGHT) * f_j.image_y * 100);
+			// julia(img, (x / WIDTH) * f_j.image_x * 100, (y / HEIGHT) * f_j.image_y * 100);
+			julia(img, (f_j.image_x / WIDTH) * x * 100, (f_j.image_y / HEIGHT) * y * 100);
 			y++;
 		}
 		y = 0;
@@ -70,3 +71,6 @@ void	julia(t_data *img, double x, double y)
 	img->x = z.r;
 	img->y = z.i;
 }
+
+// 		z.r = (z.r * z.r) - (z.i * z.i) - 0.8 + (0.6 / x / WIDTH);
+//		 z.i = (2 * z.i * tmp_r) + (0.27015 / y / HEIGHT);

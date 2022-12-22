@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/21 17:11:37 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/22 10:51:04 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,25 +65,30 @@ typedef struct	s_complex
 	double i;
 }				t_complex;
 
-#endif
-
-void	cadre(t_data *img, int x, int y);
 
 void   		put_pixel(t_data *data, int x, int y, int color);
 void		init_window(void);
 // void    init_window(t_mlx mlx, t_data img);
 
+// draw
+void		cadre(t_data *img, int x, int y);
 t_mlx		init_image(t_data img, t_mlx mlx);
-void		draw_image(t_data img, int x, int y);
+int			draw_image(t_data img, int x, int y);
+// int			draw_fractal(t_data img, t_fractal f);
+
 
 // Mandelbrot
 void		mandelbrot(t_data *img, double x, double y);
 t_fractal   init_mandelbrot(t_fractal f_mandelbrot);
 void		calculate_mandelbrot(t_data *img, t_fractal f_m);
 
-
 // Julia
 t_fractal   init_julia(t_fractal f_julia);
 void		julia(t_data *img, double x, double y);
 void		calculate_julia(t_data *img, t_fractal f_j);
 
+// Keyboard
+int			close_win(t_mlx *mlx);
+int			keypress(int keycode, t_mlx *mlx);
+
+#endif
