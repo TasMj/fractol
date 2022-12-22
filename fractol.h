@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/22 10:51:04 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/22 17:19:04 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void		calculate_mandelbrot(t_data *img, t_fractal f_m);
 
 // Julia
 t_fractal   init_julia(t_fractal f_julia);
-void		julia(t_data *img, double x, double y);
+void		julia(t_data *img, double x, double y, t_fractal f_j);
 void		calculate_julia(t_data *img, t_fractal f_j);
 
 // Keyboard

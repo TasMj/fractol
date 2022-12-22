@@ -6,7 +6,7 @@
 /*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:35:32 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/22 15:48:26 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/22 18:31:42 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_fractal   init_julia(t_fractal f_julia)
     f_julia.x_max = 1;
     f_julia.y_min = -1.2;
     f_julia.y_max = 1.2;
-    f_julia.zoom = 100;
+    f_julia.zoom = 200;
     f_julia.iteration_max = 150;
 	f_julia.image_x = (f_julia.x_max - f_julia.x_min);
 	f_julia.image_y = (f_julia.y_max - f_julia.y_min);
@@ -38,17 +38,14 @@ void calculate_julia(t_data *img, t_fractal f_j)
 		y = 0;
         while (y < HEIGHT)
         {
-			// julia(img, ((f_j.image_x / WIDTH) + x) / 10, ((f_j.image_y / HEIGHT) + y) / 10);
-			// julia(img, (x / WIDTH) * f_j.image_x * 100, (y / HEIGHT) * f_j.image_y * 100);
-			julia(img, (f_j.image_x / WIDTH) * x * 100, (f_j.image_y / HEIGHT) * y * 100);
-			// julia(img, x / f_j.image_x, y / f_j.image_y);
+			julia(img, x, y, f_j);
 			y++;
-		}
+			}
         x++;
     }
 }
 
-void	julia(t_data *img, double x, double y)
+void	julia(t_data *img, double x, double y, t_fractal f_j)
 {
     int i;
     t_complex   c;
@@ -58,17 +55,18 @@ void	julia(t_data *img, double x, double y)
     i = 0;
     c.r = 0.285;
     c.i = 0.01;
-	z.r = x / 100 - 1;  // CHANGER OUR 100
-	z.i = y / 100 - 1.2; //SAME
+	z.r = x / f_j.zoom + f_j.x_min;
+	z.i = y / f_j.zoom + f_j.y_min;
 	while ((pow(z.r, 2) + pow(z.r, 2)) < 4 && i < 150) 
 	{
 		tmp_r = z.r;
-		z.r = (z.r * z.r) - (z.i * z.i)  + (c.r);
-		z.i = (2 * z.i * tmp_r) + (c.i);
+		z.r = (z.r * z.r) - (z.i * z.i) + c.r;
+		z.i = (2 * z.i * tmp_r) + c.i;
 		i++;
 	}
 	if (i == 150)
-		put_pixel(img, x, y, 0x0077B5FE);
+		// put_pixel(img, x + (WIDTH/2) + (f_j.zoom * f_j.x_min) , y + (HEIGHT/2) + (f_j.zoom * f_j.y_min), 0x0077B5FE);
+		put_pixel(img, (x - 40 *f_j.x_max) + (WIDTH/2), (y - 20*f_j.y_max) + (HEIGHT/2), 0x0077B5FE);
 }
 
 // 		z.r = (z.r * z.r) - (z.i * z.i) - 0.8 + (0.6 / x / WIDTH);
