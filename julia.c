@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:35:32 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/22 09:55:46 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/22 15:48:26 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,22 @@ t_fractal   init_julia(t_fractal f_julia)
 
 void calculate_julia(t_data *img, t_fractal f_j)
 {
-    double x = img->x;
-    double y = img->y;
+    double x;
+    double y;
+	
+	x = 0;
 	f_j = init_julia(f_j);
 	while (x < WIDTH)
     {
+		y = 0;
         while (y < HEIGHT)
         {
 			// julia(img, ((f_j.image_x / WIDTH) + x) / 10, ((f_j.image_y / HEIGHT) + y) / 10);
 			// julia(img, (x / WIDTH) * f_j.image_x * 100, (y / HEIGHT) * f_j.image_y * 100);
 			julia(img, (f_j.image_x / WIDTH) * x * 100, (f_j.image_y / HEIGHT) * y * 100);
+			// julia(img, x / f_j.image_x, y / f_j.image_y);
 			y++;
 		}
-		y = 0;
         x++;
     }
 }
@@ -55,21 +58,17 @@ void	julia(t_data *img, double x, double y)
     i = 0;
     c.r = 0.285;
     c.i = 0.01;
-	z.r = x / 100 - 1;
-	z.i = y / 100 - 1.2;
-	while ((pow(z.r, 2) + pow(z.r, 2)) < 4 && i < 150)
+	z.r = x / 100 - 1;  // CHANGER OUR 100
+	z.i = y / 100 - 1.2; //SAME
+	while ((pow(z.r, 2) + pow(z.r, 2)) < 4 && i < 150) 
 	{
 		tmp_r = z.r;
-		z.r = (z.r * z.r) - (z.i * z.i) + c.r;
-		z.i = (2 * z.i * tmp_r) + c.i;
+		z.r = (z.r * z.r) - (z.i * z.i)  + (c.r);
+		z.i = (2 * z.i * tmp_r) + (c.i);
 		i++;
 	}
 	if (i == 150)
-	{
 		put_pixel(img, x, y, 0x0077B5FE);
-	}
-	img->x = z.r;
-	img->y = z.i;
 }
 
 // 		z.r = (z.r * z.r) - (z.i * z.i) - 0.8 + (0.6 / x / WIDTH);

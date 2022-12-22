@@ -6,7 +6,7 @@
 /*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:47:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/21 12:58:29 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/22 14:21:48 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void calculate_mandelbrot(t_data *img, t_fractal f_m)
         x++;
     }
 }
-
 // fprintf(stderr, "x= %f - y = %f", x, y);
 
 void	mandelbrot(t_data *img, double x, double y)

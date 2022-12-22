@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:08:21 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/22 11:08:55 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/22 14:20:11 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(void)
 	// FAIRE HOOK
 	
 	mlx_hook(mlx.mlx_win, 2, 1L << 0, keypress, &mlx);
-	mlx_loop_hook(mlx.mlx, &draw_image, &img);
+	// mlx_loop_hook(mlx.mlx, &draw_image, &img);
 	mlx_loop(mlx.mlx);
 
 	
