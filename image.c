@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:45:55 by tas               #+#    #+#             */
-/*   Updated: 2022/12/22 17:53:30 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/22 20:28:13 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	cadre(t_data *img, int x, int y) // A SUPPR
 	{
 		while (x <= WIDTH)
 		{
-			if (x == 0 || x == WIDTH - 1 || x == WIDTH/2 || y == 0 || y == HEIGHT - 1 || y == HEIGHT/2)
+			if (x == 0 || x == WIDTH - 1 || x == WIDTH / 2 || y == 0 || y == HEIGHT - 1 || y == HEIGHT / 2)
 			{
 				put_pixel(img, x, y, 0x00FFA500);
 			}

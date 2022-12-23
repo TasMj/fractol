@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/22 17:19:04 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/23 22:04:06 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include <math.h>
 #include "./mlx_linux/mlx.h"
 
-# define	WIDTH 1920
-# define	HEIGHT 1080
+# define	WIDTH 1820
+# define	HEIGHT 980
 
 typedef struct	s_data 
 {
@@ -78,17 +78,21 @@ int			draw_image(t_data img, int x, int y);
 
 
 // Mandelbrot
-void		mandelbrot(t_data *img, double x, double y);
+void		mandelbrot(t_data *img, double x, double y, t_fractal f_m);
 t_fractal   init_mandelbrot(t_fractal f_mandelbrot);
 void		calculate_mandelbrot(t_data *img, t_fractal f_m);
 
 // Julia
-t_fractal   init_julia(t_fractal f_julia);
+// t_fractal   init_julia(t_fractal f_julia);
 void		julia(t_data *img, double x, double y, t_fractal f_j);
+// void		julia(t_data *img, double x, double y);
 void		calculate_julia(t_data *img, t_fractal f_j);
 
 // Keyboard
 int			close_win(t_mlx *mlx);
 int			keypress(int keycode, t_mlx *mlx);
+// int keypress(int keycode, t_mlx *mlx, t_fractal f, t_data *img);
+// int zoom(t_fractal f, t_data *img);
+
 
 #endif

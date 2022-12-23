@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:47:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/22 14:21:48 by tmejri           ###   ########.fr       */
+/*   Updated: 2022/12/23 22:53:27 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 t_fractal   init_mandelbrot(t_fractal f_mandelbrot)
 {
-    f_mandelbrot.x_min = -2.1;
+    f_mandelbrot.x_min = -1.8;
     f_mandelbrot.x_max = 0.6;
-    f_mandelbrot.y_min = -1.2;
+    f_mandelbrot.y_min = -1;
     f_mandelbrot.y_max = 1.2;
-    f_mandelbrot.zoom = 100;
+    f_mandelbrot.zoom = 400;
     f_mandelbrot.iteration_max = 50;
 	f_mandelbrot.image_x = (f_mandelbrot.x_max - f_mandelbrot.x_min);
 	f_mandelbrot.image_y = (f_mandelbrot.y_max - f_mandelbrot.y_min);
@@ -27,24 +27,26 @@ t_fractal   init_mandelbrot(t_fractal f_mandelbrot)
 
 void calculate_mandelbrot(t_data *img, t_fractal f_m)
 {
-    double x = 0;
-    double y = 0;
-
+    double x;
+    double y;
+	
+	x = 0;
 	f_m = init_mandelbrot(f_m);
 	while (x < WIDTH)
     {
+		y = 0;
         while (y < HEIGHT)
         {         
-			mandelbrot(img, ((f_m.image_x / (WIDTH / 2)) + x) / 10, ((f_m.image_y / (HEIGHT/2)) + y) / 10);
+			mandelbrot(img, x, y, f_m);
             y++;
         }
-		y = 0;
         x++;
     }
 }
+
 // fprintf(stderr, "x= %f - y = %f", x, y);
 
-void	mandelbrot(t_data *img, double x, double y)
+void	mandelbrot(t_data *img, double x, double y, t_fractal f_m)
 {
 	int		i;
 	t_complex	c;
@@ -52,8 +54,8 @@ void	mandelbrot(t_data *img, double x, double y)
 	double		tmp_r;
 	
     i = 0;
-	c.r = x;
-	c.i = y;
+	c.r = x / f_m.zoom + f_m.x_min;
+	c.i = y / f_m.zoom + f_m.y_min;
 	z.r = 0;
 	z.i = 0;
 	while ((pow(z.r, 2) + pow(z.i, 2)) < 4 && i < 50)
@@ -64,10 +66,6 @@ void	mandelbrot(t_data *img, double x, double y)
 		i++;
 	}
 	if (i == 50)
-	{
-		put_pixel(img, x, y, 0x0077B5FE);
-		printf("A\n");
-	}
-	// printf("B\n");
-	
+		// put_pixel(img, x + WIDTH/2 - (f_m.zoom * f_m.x_max), y + HEIGHT/2 - (f_m.zoom * f_m.y_max), 0x0077B5FE);
+		put_pixel(img, x + WIDTH/2 - f_m.zoom, y + HEIGHT/2 - f_m.zoom, 0x0077B5FE);
 }
