@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:47:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/23 22:53:27 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/24 12:35:34 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ t_fractal   init_mandelbrot(t_fractal f_mandelbrot)
     f_mandelbrot.x_max = 0.6;
     f_mandelbrot.y_min = -1;
     f_mandelbrot.y_max = 1.2;
-    f_mandelbrot.zoom = 400;
+    f_mandelbrot.zoom = 500;
+	f_mandelbrot.color = 0x0077B5FE;
     f_mandelbrot.iteration_max = 50;
 	f_mandelbrot.image_x = (f_mandelbrot.x_max - f_mandelbrot.x_min);
 	f_mandelbrot.image_y = (f_mandelbrot.y_max - f_mandelbrot.y_min);
@@ -58,14 +59,17 @@ void	mandelbrot(t_data *img, double x, double y, t_fractal f_m)
 	c.i = y / f_m.zoom + f_m.y_min;
 	z.r = 0;
 	z.i = 0;
-	while ((pow(z.r, 2) + pow(z.i, 2)) < 4 && i < 50)
+	while ((pow(z.r, 2) + pow(z.i, 2)) < 4 && i < f_m.iteration_max)
 	{
 		tmp_r = z.r;
 		z.r = (z.r * z.r) - (z.i * z.i) + c.r;
 		z.i = (2 * z.i * tmp_r) + c.i;
 		i++;
 	}
-	if (i == 50)
-		// put_pixel(img, x + WIDTH/2 - (f_m.zoom * f_m.x_max), y + HEIGHT/2 - (f_m.zoom * f_m.y_max), 0x0077B5FE);
-		put_pixel(img, x + WIDTH/2 - f_m.zoom, y + HEIGHT/2 - f_m.zoom, 0x0077B5FE);
+	if (i == f_m.iteration_max)
+		put_pixel(img, x, y, 0x000000);
+	else				
+		put_pixel(img, x, y, f_m.color * i);
 }
+
+		// put_pixel(img, x + WIDTH/2 - f_m.zoom, y + HEIGHT/2 - f_m.zoom, f_m.color * i);

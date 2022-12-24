@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/23 22:04:06 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/24 12:06:51 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,10 @@ typedef	struct	s_mlx
 	void	*mlx_win;
 }				t_mlx;
 
-typedef	struct	s_rgbt
+typedef	struct	s_colors
 {
-	int	r;
-	int	g;
-	int	b;
-	int	t;
-}				t_rgbt;
+	int	range[4];
+}				t_colors;
 
 typedef	struct s_fractal
 {
@@ -56,6 +53,7 @@ typedef	struct s_fractal
 	double	iteration_max;
 	double	image_x;
 	double	image_y;
+	int		color;
 }				t_fractal;
 
 
