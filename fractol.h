@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/24 12:06:51 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/24 17:51:42 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h> // A SUPPR
 #include <stdlib.h>
 #include <math.h>
+#include <unistd.h>
 #include "./mlx_linux/mlx.h"
 
 # define	WIDTH 1820
@@ -37,11 +38,6 @@ typedef	struct	s_mlx
 	void	*mlx;
 	void	*mlx_win;
 }				t_mlx;
-
-typedef	struct	s_colors
-{
-	int	range[4];
-}				t_colors;
 
 typedef	struct s_fractal
 {
@@ -81,10 +77,14 @@ t_fractal   init_mandelbrot(t_fractal f_mandelbrot);
 void		calculate_mandelbrot(t_data *img, t_fractal f_m);
 
 // Julia
-// t_fractal   init_julia(t_fractal f_julia);
+t_fractal   init_julia(t_fractal f_julia);
 void		julia(t_data *img, double x, double y, t_fractal f_j);
-// void		julia(t_data *img, double x, double y);
 void		calculate_julia(t_data *img, t_fractal f_j);
+
+// Burningship
+t_fractal   init_burningship(t_fractal f_burningship);
+void		calculate_burningship(t_data *img, t_fractal f_b);
+void		burningship(t_data *img, double x, double y, t_fractal f_b);
 
 // Keyboard
 int			close_win(t_mlx *mlx);
@@ -92,5 +92,12 @@ int			keypress(int keycode, t_mlx *mlx);
 // int keypress(int keycode, t_mlx *mlx, t_fractal f, t_data *img);
 // int zoom(t_fractal f, t_data *img);
 
+// Tools
+int	ft_strcmp(const char *s1, const char *s2);
 
-#endif
+// Fractal
+int			select_fractal(char **argv);
+void		calc_fractal(t_data *img, t_fractal f, void(*funct) ());
+int			init_fract(char **argv, t_data *img, t_fractal f);
+
+#endif	
