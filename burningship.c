@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phoenix.c                                          :+:      :+:    :+:   */
+/*   burningship.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:25:21 by tas               #+#    #+#             */
-/*   Updated: 2022/12/24 16:56:12 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/25 01:54:17 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,6 @@ t_fractal   init_burningship(t_fractal f_burningship)
 	f_burningship.image_x = (f_burningship.x_max - f_burningship.x_min);
 	f_burningship.image_y = (f_burningship.y_max - f_burningship.y_min);
     return (f_burningship);
-}
-
-void calculate_burningship(t_data *img, t_fractal f_b)
-{
-    double x;
-    double y;
-	
-	x = 0;
-	f_b = init_burningship(f_b);
-	while (x < WIDTH)
-    {
-		y = 0;
-        while (y < HEIGHT)
-        {         
-			burningship(img, x, y, f_b);
-            y++;
-        }
-        x++;
-    }
 }
 
 // fprintf(stderr, "x= %f - y = %f", x, y);
@@ -64,7 +45,6 @@ void	burningship(t_data *img, double x, double y, t_fractal f_b)
 		tmp_r = z.r;
 		z.r = fabs(pow(z.r, 2) - pow(z.i, 2) + c.r);
 		z.i = fabs(2 * z.i * tmp_r + c.i);
-
 		i++;
 	}
 	if (i == f_b.iteration_max)

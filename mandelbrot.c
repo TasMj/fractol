@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:47:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/24 12:35:34 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/25 02:00:50 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,6 @@ t_fractal   init_mandelbrot(t_fractal f_mandelbrot)
 	f_mandelbrot.image_y = (f_mandelbrot.y_max - f_mandelbrot.y_min);
     return (f_mandelbrot);
 }
-
-void calculate_mandelbrot(t_data *img, t_fractal f_m)
-{
-    double x;
-    double y;
-	
-	x = 0;
-	f_m = init_mandelbrot(f_m);
-	while (x < WIDTH)
-    {
-		y = 0;
-        while (y < HEIGHT)
-        {         
-			mandelbrot(img, x, y, f_m);
-            y++;
-        }
-        x++;
-    }
-}
-
-// fprintf(stderr, "x= %f - y = %f", x, y);
 
 void	mandelbrot(t_data *img, double x, double y, t_fractal f_m)
 {
@@ -72,4 +51,4 @@ void	mandelbrot(t_data *img, double x, double y, t_fractal f_m)
 		put_pixel(img, x, y, f_m.color * i);
 }
 
-		// put_pixel(img, x + WIDTH/2 - f_m.zoom, y + HEIGHT/2 - f_m.zoom, f_m.color * i);
+// put_pixel(img, x + WIDTH/2 - f_m.zoom, y + HEIGHT/2 - f_m.zoom, f_m.color * i);

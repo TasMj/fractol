@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:08:21 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/24 18:46:36 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/25 02:32:01 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,14 @@ int	main(int argc, char **argv)
 	t_data	img;
 	t_fractal	f;
 
-	mlx.mlx = mlx_init();
-	mlx.mlx_win = mlx_new_window(mlx.mlx, WIDTH, HEIGHT, "Fractol");
-	img.img = mlx_new_image(mlx.mlx, WIDTH, HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								&img.endian);
-	
-	if (argc == 2)
-		init_fract(argv, &img, f);
-	else
+	init_window(&mlx, &img);
+	if (argc != 2 || init_fract(argv, &img, f) == 1)
+	{
+		write(1, "ERROR: incorrect fractal\nAvailable fractals:\n\n", 46);
+		write(1,"* Mandelbrot\n* Julia\n* Julia_2\n* Julia_3\n* Burningship", 54);
 		return (1);
+	}	
+	init_fract(argv, &img, f);
 	
 	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, img.img, 0, 0);
 
@@ -37,12 +35,7 @@ int	main(int argc, char **argv)
 	// mlx_loop_hook(mlx.mlx, &draw_image, &img);
 	mlx_loop(mlx.mlx);
 
-	
-	//FREE TOUT A LA FIN
-	mlx_destroy_image(mlx.mlx, img.img);
-	mlx_destroy_window(mlx.mlx, mlx.mlx_win);
-	mlx_destroy_display(mlx.mlx);
-	free(mlx.mlx);	
+	end_window(&mlx, &img);
 }
 
 

@@ -6,22 +6,32 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:01:08 by tas               #+#    #+#             */
-/*   Updated: 2022/12/24 18:51:20 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/25 02:27:13 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <unistd.h>
+
 
 int select_fractal(char **argv)
 {
-    if (ft_strcmp(argv[1], "Mandelbrot") == 0)
+    if (ft_strcmp(argv[1], "Mandelbrot") == 0
+		|| ft_strcmp(argv[1], "mandelbrot") == 0)
         return (1);
-    if (ft_strcmp(argv[1], "Julia") == 0)
+    else if (ft_strcmp(argv[1], "Julia") == 0
+		|| ft_strcmp(argv[1], "julia") == 0)
         return (2);
-    if (ft_strcmp(argv[1], "Burningship") == 0)
+    else if (ft_strcmp(argv[1], "Burningship") == 0
+		|| ft_strcmp(argv[1], "burningship") == 0)
         return (3);
-	else
-		return (0);
+	else if (ft_strcmp(argv[1], "Julia_2") == 0
+		|| ft_strcmp(argv[1], "julia_2") == 0)
+        return (4);
+	else if (ft_strcmp(argv[1], "Julia_3") == 0
+		|| ft_strcmp(argv[1], "julia_3") == 0)
+        return (5);
+	return (0);
 }
 
  void calc_fractal(t_data *img, t_fractal f, void(*funct) ())
@@ -47,7 +57,6 @@ int	init_fract(char **argv, t_data *img, t_fractal f)
 	if (select_fractal(argv) == 1)
 	{
 		f = init_mandelbrot(f);
-		printf("x: %f\n", f.x_max);	
 		calc_fractal(img, f, mandelbrot);
 	}
 	else if (select_fractal(argv) == 2)
@@ -60,11 +69,21 @@ int	init_fract(char **argv, t_data *img, t_fractal f)
 		f = init_burningship(f);
 		calc_fractal(img, f, burningship);
 	}
-	else
+	else if (select_fractal(argv) == 4)
 	{
-		// write(1, "Error\n", 6);
-		return (1);
+		f = init_julia(f);
+		f.c.r = -0.4;
+		f.c.i = 0.6;
+		calc_fractal(img, f, julia);
 	}
-	printf("fract: %d\n", select_fractal(argv));
+	else if (select_fractal(argv) == 5)
+	{
+		f = init_julia(f);
+		f.c.r = -0.835;
+		f.c.i = -0.2321;
+		calc_fractal(img, f, julia);
+	}
+	else
+		return (1);
 	return (0);	
 }
