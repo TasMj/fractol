@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:01:08 by tas               #+#    #+#             */
-/*   Updated: 2022/12/25 02:27:13 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/25 04:06:10 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int select_fractal(char **argv)
 	return (0);
 }
 
- void calc_fractal(t_data *img, t_fractal f, void(*funct) ())
+ void calc_fractal(t_data *img,  t_mlx *mlx, void(*funct) ())
 {
     double x;
     double y;
@@ -45,45 +45,46 @@ int select_fractal(char **argv)
 		y = 0;
         while (y < HEIGHT)
         {
-			funct(img, x, y, f);
+			funct(img, x, y, mlx);
 			y++;
 		}
         x++;
     }
+	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, img->img, 0, 0);
 }
 
-int	init_fract(char **argv, t_data *img, t_fractal f)
+int	init_fract(char **argv, t_mlx *mlx, t_data *img)
 {
 	if (select_fractal(argv) == 1)
 	{
-		f = init_mandelbrot(f);
-		calc_fractal(img, f, mandelbrot);
+		mlx->f = init_mandelbrot(mlx);
+		calc_fractal(img, mlx, mandelbrot);
 	}
 	else if (select_fractal(argv) == 2)
 	{
-		f = init_julia(f);
-		calc_fractal(img, f, julia);
+		mlx->f = init_julia(mlx);
+		calc_fractal(img, mlx, julia);
 	}
 	else if (select_fractal(argv) == 3)
 	{
-		f = init_burningship(f);
-		calc_fractal(img, f, burningship);
+		mlx->f = init_burningship(mlx);
+		calc_fractal(img, mlx, burningship);
 	}
 	else if (select_fractal(argv) == 4)
 	{
-		f = init_julia(f);
-		f.c.r = -0.4;
-		f.c.i = 0.6;
-		calc_fractal(img, f, julia);
+		mlx->f = init_julia(mlx);
+		mlx->f.c.r = -0.4;
+		mlx->f.c.i = 0.6;
+		calc_fractal(img, mlx, julia);
 	}
 	else if (select_fractal(argv) == 5)
 	{
-		f = init_julia(f);
-		f.c.r = -0.835;
-		f.c.i = -0.2321;
-		calc_fractal(img, f, julia);
+		mlx->f = init_julia(mlx);
+		mlx->f.c.r = -0.835;
+		mlx->f.c.i = -0.2321;
+		calc_fractal(img, mlx, julia);
 	}
 	else
 		return (1);
-	return (0);	
+	return (0);
 }
