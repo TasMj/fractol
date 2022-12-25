@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:01:08 by tas               #+#    #+#             */
-/*   Updated: 2022/12/25 04:06:10 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/26 00:04:19 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,13 @@ int select_fractal(char **argv)
     double y;
 	
 	x = 0;
+		printf("\nadd calc: %s\n", img->addr);
+		printf("img calc: %p\n\n", img->img);
+		
+	
 	while (x < WIDTH)
     {
+	// printf("OKOKOKKKK\n");
 		y = 0;
         while (y < HEIGHT)
         {

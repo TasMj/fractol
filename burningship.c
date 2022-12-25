@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:25:21 by tas               #+#    #+#             */
-/*   Updated: 2022/12/25 03:57:25 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/25 16:24:43 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ void	burningship(t_data *img, double x, double y, t_mlx *mlx)
 		z.i = fabs(2 * z.i * tmp_r + c.i);
 		i++;
 	}
-	if (i == mlx->f.iteration_max)
-		put_pixel(img, x, y, 0x000000);
-	else				
+	if (!(i == mlx->f.iteration_max))
 		put_pixel(img, x, y, mlx->f.color * i);
+		// put_pixel(img, x + WIDTH/2 - mlx->f.zoom, y + HEIGHT/2 - mlx->f.zoom, mlx->f.color * i);
 }

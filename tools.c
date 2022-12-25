@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:09:20 by tas               #+#    #+#             */
-/*   Updated: 2022/12/25 02:02:01 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/25 23:19:40 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,22 @@ void    put_pixel(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-// void	cadre(t_data *img, int x, int y) // A SUPPR
+// char	*ft_strdup(const char *s)
 // {
-// 	while (y <= HEIGHT)
+// 	char	*ss;
+// 	int		i;
+// 	int		len_s;
+
+// 	i = 0;
+// 	len_s = ft_strlen(s);
+// 	ss = (char *)malloc(sizeof(char) * len_s + 1);
+// 	if (ss == 0)
+// 		return (NULL);
+// 	while (s[i])
 // 	{
-// 		while (x <= WIDTH)
-// 		{
-// 			if (x == 0 || x == WIDTH - 1 || x == WIDTH / 2 || y == 0 || y == HEIGHT - 1 || y == HEIGHT / 2)
-// 			{
-// 				put_pixel(img, x, y, 0x00FFA500);
-// 			}
-// 			x++;
-// 		}
-// 		x = 0;
-// 		y++;
+// 		ss[i] = s[i];
+// 		i++;
 // 	}
+// 	ss[i] = '\0';
+// 	return (ss);
 // }

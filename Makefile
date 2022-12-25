@@ -6,14 +6,14 @@
 #    By: tas <tas@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:33:21 by tmejri            #+#    #+#              #
-#    Updated: 2022/12/25 02:04:34 by tas              ###   ########.fr        #
+#    Updated: 2022/12/25 23:25:23 by tas              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= fractol
 
 SRCS		= burningship.c fractol.c julia.c keyboard.c main.c \
-			mandelbrot.c mouse.c tools.c window.c \
+			mandelbrot.c tools.c window.c \
 
 OBJ			= ${SRCS:.c=.o}
 	

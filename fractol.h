@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/25 04:03:56 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/25 23:24:09 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 # define	WIDTH 1820
 # define	HEIGHT 980
+# define	MENU "image_menu/DSC.xpm"
 
 typedef struct	s_data 
 {
@@ -31,6 +32,7 @@ typedef struct	s_data
 	int		endian;
 	double	x;
 	double	y;
+	char *name;   // A voir si suppri ou pas
 }				t_data;
 
 typedef struct	s_complex
@@ -62,41 +64,44 @@ typedef	struct	s_mlx
 }				t_mlx;
 
 
-void   		put_pixel(t_data *data, int x, int y, int color);
 
-// Window
+// WINDOW
 void		init_window(t_mlx *mlx, t_data *img);
 void		end_window(t_mlx *mlx, t_data *img);
 
-// draw
-void		cadre(t_data *img, int x, int y);
-
-// Mandelbrot
-t_fractal   init_mandelbrot(t_mlx *mlx);
-void		mandelbrot(t_data *img, double x, double y, t_mlx *mlx);
-
-// Julia
-t_fractal   init_julia(t_mlx *mlx);
-void	julia(t_data *img, double x, double y, t_mlx *mlx);
-
-
-// Burningship
-t_fractal   init_burningship(t_mlx *mlx);
-void		burningship(t_data *img, double x, double y, t_mlx *mlx);
-
-// Keyboard
-int			close_win(t_mlx *mlx);
-// int			keypress(int keycode, t_mlx *mlx);
-int keypress(int keycode, t_mlx *mlx, t_data *img);
-// int zoom(t_fractal f, t_data *img);
-
-// Tools
-int	ft_strcmp(const char *s1, const char *s2);
-
-// Fractal
+// FRACTAL
 int			select_fractal(char **argv);
 void		calc_fractal(t_data *img, t_mlx *mlx, void(*funct) ());
 int			init_fract(char **argv, t_mlx *mlx, t_data *img);
 
+// MANDELBROT
+t_fractal   init_mandelbrot(t_mlx *mlx);
+void		mandelbrot(t_data *img, double x, double y, t_mlx *mlx);
+
+// JULIA
+t_fractal   init_julia(t_mlx *mlx);
+void		julia(t_data *img, double x, double y, t_mlx *mlx);
+
+
+// BURNINGSHIP
+t_fractal   init_burningship(t_mlx *mlx);
+void		burningship(t_data *img, double x, double y, t_mlx *mlx);
+
+// KEYBOARD
+int			close_win(t_mlx *mlx);
+int			keypress(int keycode, t_mlx *mlx, t_data *img);
+
+			// int zoom(t_fractal f, t_data *img);
+
+// MOUSE
+int			zoom(t_mlx *mlx, t_data *img);
+int			mouse_hook(int keycode, t_mlx *mlx, t_data *img);
+
+// TOOLS
+int			ft_strcmp(const char *s1, const char *s2);
+void   		put_pixel(t_data *data, int x, int y, int color);
+char		*ft_strdup(const char *s);
+
+			// void		cadre(t_data *img, int x, int y);
 
 #endif	

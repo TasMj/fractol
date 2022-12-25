@@ -11,3 +11,21 @@
 // /* ************************************************************************** */
 
 #include "fractol.h"
+
+int mouse_hook(int keycode, t_mlx *mlx, t_data *img)
+{
+	(void)img;
+    printf("key = %d\n", keycode);
+	if (keycode == 4)
+		mlx->f.zoom = mlx->f.zoom * 1.5;
+	else if (keycode == 5)
+		mlx->f.zoom = mlx->f.zoom / 1.5;
+	// if ((souris > 0 && souris < WIDTH) && (souris > 0 && souris < HEIGHT))
+	// {
+		// zoomer sur la position();
+	// }
+	// if (souris == la croix)
+		// close_win(mlx)
+	calc_fractal(img, mlx, mandelbrot);
+	return (0);
+}

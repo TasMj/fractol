@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:08:21 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/25 04:06:49 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/26 00:05:02 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int argc, char **argv)
 	t_data	img;
 
 	init_window(&mlx, &img);
+		printf("\nadd main: %s\n", img.addr);
+	
 	if (argc != 2 || init_fract(argv, &mlx, &img) == 1)
 	{
 		write(1, "ERROR: incorrect fractal\nAvailable fractals:\n\n", 46);
@@ -25,15 +27,14 @@ int	main(int argc, char **argv)
 		return (1);
 	}	
 	init_fract(argv, &mlx, &img);
-	
-	// mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, img.img, 0, 0);
-
-	// FAIRE HOOK
-	
-	mlx_hook(mlx.mlx_win, 2, 1L << 0, keypress, &mlx);
-	// mlx_loop_hook(mlx.mlx, &draw_image, &img);
+	mlx_hook(mlx.mlx_win, 17, 0, close_win, &mlx);
+	mlx_key_hook(mlx.mlx_win, keypress, &mlx);
+	// mlx_mouse_hook(mlx.mlx_win, mouse_hook, &mlx);
 	mlx_loop(mlx.mlx);
 
+
+
+	// mlx_loop_hook(mlx.mlx, &draw_image, &img);
 	end_window(&mlx, &img);
 }
 
