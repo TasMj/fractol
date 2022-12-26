@@ -12,20 +12,27 @@
 
 #include "fractol.h"
 
-int mouse_hook(int keycode, t_mlx *mlx, t_data *img)
+int mouse_hook(int keycode, t_mlx *mlx)
 {
-	(void)img;
-    printf("key = %d\n", keycode);
-	if (keycode == 4)
-		mlx->f.zoom = mlx->f.zoom * 1.5;
-	else if (keycode == 5)
-		mlx->f.zoom = mlx->f.zoom / 1.5;
+	printf("key = %d\n", keycode);
+	printf("--> mlx: %p\n", mlx->img->addr);
+
+	if (keycode == 4 && keycode == 2)
+	{
+		printf("zoom: %f\n", mlx->f.zoom);
+		reset_screen(mlx);
+    	mlx->f.zoom += 100;
+	}
+    else if ((keycode == 5 || keycode == 4) && mlx->f.zoom > 100)
+	{
+		printf("zoom: %f\n", mlx->f.zoom);
+		reset_screen(mlx);
+    	mlx->f.zoom -= 100;
+	}
 	// if ((souris > 0 && souris < WIDTH) && (souris > 0 && souris < HEIGHT))
 	// {
 		// zoomer sur la position();
 	// }
-	// if (souris == la croix)
-		// close_win(mlx)
-	calc_fractal(img, mlx, mandelbrot);
+	find_fract(mlx);
 	return (0);
 }

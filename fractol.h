@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/26 13:49:31 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/26 17:33:31 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef	struct s_fractal
 	int			color;
 	double		image_x;
 	double		image_y;
+	int			help_menu;
 	double		iteration_max;
 	t_complex	c;
 }				t_fractal;
@@ -60,8 +61,8 @@ typedef	struct	s_mlx
 {
 	void		*mlx;
 	void		*mlx_win;
-	t_fractal	f;
 	t_data		*img;
+	t_fractal	f;
 }				t_mlx;
 
 
@@ -91,19 +92,16 @@ void		burningship(t_data *img, double x, double y, t_mlx *mlx);
 // KEYBOARD
 int			close_win(t_mlx *mlx);
 int			keypress(int keycode, t_mlx *mlx);
+int			find_fract(t_mlx *mlx);
 int			reset_screen(t_mlx *mlx);
-
-			// int zoom(t_fractal f, t_data *img);
 
 // MOUSE
 int			zoom(t_mlx *mlx, t_data *img);
-int			mouse_hook(int keycode, t_mlx *mlx, t_data *img);
+int			mouse_hook(int keycode, t_mlx *mlx);
 
 // TOOLS
 int			ft_strcmp(const char *s1, const char *s2);
 void   		put_pixel(t_data *data, int x, int y, int color);
-char		*ft_strdup(const char *s);
-
-			// void		cadre(t_data *img, int x, int y);
+// char		*ft_strdup(const char *s);
 
 #endif	
