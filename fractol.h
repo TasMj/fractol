@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/26 10:31:11 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/26 13:49:31 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void		burningship(t_data *img, double x, double y, t_mlx *mlx);
 
 // KEYBOARD
 int			close_win(t_mlx *mlx);
-int			keypress(int keycode, t_mlx *mlx, t_data *img);
+int			keypress(int keycode, t_mlx *mlx);
+int			reset_screen(t_mlx *mlx);
 
 			// int zoom(t_fractal f, t_data *img);
 

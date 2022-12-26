@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:56:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/26 10:45:59 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/26 13:53:58 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,33 @@ int close_win(t_mlx *mlx)
 // 	return (0);
 // }
 
-int keypress(int keycode, t_mlx *mlx, t_data *img)
+int find_fract(t_mlx *mlx)
+{
+	char	*name;
+
+	name = mlx->f.name;
+	if (ft_strcmp(name, "mandelbrot") == 0)
+		calc_fractal(mlx->img, mlx, mandelbrot);
+	else if (ft_strcmp(name, "julia") == 0)
+		calc_fractal(mlx->img, mlx, julia);
+	else if (ft_strcmp(name, "burningship") == 0)
+		calc_fractal(mlx->img, mlx, burningship);
+	return (0);
+}
+
+int	reset_screen(t_mlx *mlx)
+{
+	mlx_destroy_image(mlx->mlx, mlx->img->img);
+	mlx->img->img = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
+	mlx->img->addr = mlx_get_data_addr(mlx->img->img, &mlx->img->bits_per_pixel, &mlx->img->line_length,
+								&mlx->img->endian);
+	return (0);
+}
+
+int keypress(int keycode, t_mlx *mlx)
 {
 
-    // printf("key = %d\n", keycode);
+    printf("key = %d\n", keycode);
     if (keycode == 65307)
 	{
         close_win(mlx);
@@ -47,22 +70,37 @@ int keypress(int keycode, t_mlx *mlx, t_data *img)
     if (keycode == 99)
 	{
     	mlx->f.color = mlx->f.color >> 1;
-		printf("addr key: %p\n", mlx->img->addr);
-		printf("img key: %p\n", mlx->img->img);
-		calc_fractal(mlx->img, mlx, julia);
-		
-		
+		find_fract(mlx);		
 	}
     else if (keycode == 122)
+	{
+		reset_screen(mlx);
     	mlx->f.zoom = mlx->f.zoom + 100;
-	else if (keycode == 65363 && (img->x >= 0 && img->x <= WIDTH))
-		img->x = img->x + 10;
-	else if (keycode == 65361 && (img->x >= 0 && img->x <= WIDTH))
-		img->x = img->x - 10;
-	else if (keycode == 65362 && (img->y >= 0 && img->y <= WIDTH))
-		img->y = img->y + 10;
-	else if (keycode == 65364 && (img->y >= 0 && img->y <= WIDTH))
-		img->y = img->y - 10;
+		find_fract(mlx);		
+	}
+    else if (keycode == 100 && mlx->f.zoom > 100)
+	{
+		reset_screen(mlx);
+    	mlx->f.zoom = mlx->f.zoom - 100;
+		find_fract(mlx);
+	}
+	else if (keycode == 65363 && (mlx->img->x >= 0 && mlx->img->x <= WIDTH))
+	{
+		printf("x: %f\n", mlx->img->x);
+		reset_screen(mlx);	
+		mlx->img->x = mlx->img->x + 10;
+		find_fract(mlx);
+	}
+	else if (keycode == 65361 && (mlx->img->x >= 0 && mlx->img->x <= WIDTH))
+	{
+		reset_screen(mlx);	
+		mlx->img->x = mlx->img->x - 10;
+		find_fract(mlx);
+	}
+	// else if (keycode == 65362 && (img->y >= 0 && img->y <= WIDTH))
+	// 	img->y = img->y + 10;
+	// else if (keycode == 65364 && (img->y >= 0 && img->y <= WIDTH))
+	// 	img->y = img->y - 10;
 	// else if (keycode == 104)
 		// display_menu(mlx);
     return (0);
