@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/25 23:24:09 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/26 10:31:11 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef	struct	s_mlx
 	void		*mlx;
 	void		*mlx_win;
 	t_fractal	f;
+	t_data		*img;
 }				t_mlx;
 
 

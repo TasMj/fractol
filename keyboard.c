@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:56:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/26 00:03:27 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/26 10:45:59 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int close_win(t_mlx *mlx)
 
 int keypress(int keycode, t_mlx *mlx, t_data *img)
 {
-    printf("key = %d\n", keycode);
+
+    // printf("key = %d\n", keycode);
     if (keycode == 65307)
 	{
         close_win(mlx);
@@ -46,8 +47,9 @@ int keypress(int keycode, t_mlx *mlx, t_data *img)
     if (keycode == 99)
 	{
     	mlx->f.color = mlx->f.color >> 1;
-		printf("img key: %p\n", img->img);
-		calc_fractal(img, mlx, mandelbrot);
+		printf("addr key: %p\n", mlx->img->addr);
+		printf("img key: %p\n", mlx->img->img);
+		calc_fractal(mlx->img, mlx, julia);
 		
 		
 	}
