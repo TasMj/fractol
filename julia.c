@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:35:32 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/25 16:22:26 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/26 21:54:01 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	julia(t_data *img, double x, double y, t_mlx *mlx)
 		i++;
 	}
 	if (!(i == mlx->f.iteration_max))
-		put_pixel(img, x + WIDTH/2 - mlx->f.zoom, y + HEIGHT/2 - mlx->f.zoom, mlx->f.color * i);
+		put_pixel(img, x, y, mlx->f.color * i);
 }
-
+// put_pixel(img, x + WIDTH/2 - mlx->f.zoom, y + HEIGHT/2 - mlx->f.zoom, mlx->f.color * i);
 // put_pixel(img, x + WIDTH/2 - (f_j.zoom * f_j.x_max), y + HEIGHT/2 - (f_j.zoom * f_j.y_max), 0x00000000);

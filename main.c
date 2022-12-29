@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:08:21 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/26 18:17:33 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/29 10:21:05 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	mlx.img = &img;
 	mlx_hook(mlx.mlx_win, 17, 0, close_win, &mlx);
 	mlx_key_hook(mlx.mlx_win, keypress, &mlx);
-	mlx_mouse_hook(mlx.mlx_win, mouse_hook, &mlx);
+	mlx_mouse_hook(mlx.mlx_win, mouse_hook, &img);
 	mlx_loop(mlx.mlx);
 	end_window(&mlx, &img);
 }

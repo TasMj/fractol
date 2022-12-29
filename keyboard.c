@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:56:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/26 17:51:09 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/29 10:22:45 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ int close_win(t_mlx *mlx)
 
 // int	display_menu(t_mlx *mlx)
 // {
-// 	t_data	*img_menu;
-// 	int		*w;
-// 	int		*h;
-	
-// 	w = 0;
-// 	h = 0;
-// 	img_menu->name = ft_strdup(MENU);
-// 	img_menu->img = mlx_new_image(mlx->mlx, 500, 500);
-// 	img_menu->addr = mlx_get_data_addr(img_menu->img, &img_menu->bits_per_pixel, &img_menu->line_length,
-// 								&img_menu->endian);
-// 	img_menu->img = mlx_xpm_file_to_image(mlx, MENU, w, h);
-// 	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, img_menu, 100, 100);
-// 	return (0);
+	// t_data	*img_menu;
+	// int		*w;
+	// int		*h;
+	// 
+	// w = 0;
+	// h = 0;
+	// img_menu->name = ft_strdup(MENU);
+	// img_menu->img = mlx_new_image(mlx->mlx, 500, 500);
+	// img_menu->addr = mlx_get_data_addr(img_menu->img, &img_menu->bits_per_pixel, &img_menu->line_length,
+								// &img_menu->endian);
+	// img_menu->img = mlx_xpm_file_to_image(mlx, MENU, w, h);
+	// mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, img_menu, 100, 100);
+	// return (0);
 // }
 
 int find_fract(t_mlx *mlx)
@@ -67,7 +67,7 @@ int	reset_screen(t_mlx *mlx)
 int keypress(int keycode, t_mlx *mlx)
 {
 	mlx->f.help_menu = 0; //pb ici
-    printf("key = %d\n", keycode);
+    printf("key keyboard = %d\n", keycode);
 	if (!(keycode == 65307 || keycode == 99 || keycode == 122
 		|| keycode == 100 || keycode == 65363 || keycode == 65361 
 		|| keycode == 65362 || keycode == 65364 || keycode == 104))

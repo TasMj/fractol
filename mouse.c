@@ -14,7 +14,7 @@
 
 int mouse_hook(int keycode, t_mlx *mlx)
 {
-	printf("key = %d\n", keycode);
+	printf("key mouse = %d\n", keycode);
 	printf("--> mlx: %p\n", mlx->img->addr);
 
 	if (keycode == 4 && keycode == 2)
