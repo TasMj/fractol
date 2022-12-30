@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:43:27 by tas               #+#    #+#             */
-/*   Updated: 2022/12/26 10:17:00 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/30 12:29:14 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void    init_window(t_mlx *mlx, t_data *img)
 	img->img = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length,
 								&img->endian);
+	display_menu(mlx);
 }
 
 void	end_window(t_mlx *mlx, t_data *img)

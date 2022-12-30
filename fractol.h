@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/26 17:33:31 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/30 12:34:37 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@
 # define	WIDTH 1820
 # define	HEIGHT 980
 # define	MENU "image_menu/DSC.xpm"
+
+typedef struct s_menu
+{
+	char	*path;
+	void	*img;
+	int		h;
+	int		w;
+	int		flag;
+}				t_menu;
+
 
 typedef struct	s_data 
 {
@@ -52,7 +62,6 @@ typedef	struct s_fractal
 	int			color;
 	double		image_x;
 	double		image_y;
-	int			help_menu;
 	double		iteration_max;
 	t_complex	c;
 }				t_fractal;
@@ -63,6 +72,7 @@ typedef	struct	s_mlx
 	void		*mlx_win;
 	t_data		*img;
 	t_fractal	f;
+	t_menu		menu;
 }				t_mlx;
 
 
@@ -96,12 +106,18 @@ int			find_fract(t_mlx *mlx);
 int			reset_screen(t_mlx *mlx);
 
 // MOUSE
-int			zoom(t_mlx *mlx, t_data *img);
+// int			zoom(t_mlx *mlx, t_data *img);
 int			mouse_hook(int keycode, t_mlx *mlx);
 
 // TOOLS
 int			ft_strcmp(const char *s1, const char *s2);
 void   		put_pixel(t_data *data, int x, int y, int color);
-// char		*ft_strdup(const char *s);
+char		*ft_strdup(const char *s);
+
+// MENU
+int			display_menu(t_mlx *mlx);
+void	    draw_menu(t_mlx *mlx);
+
+
 
 #endif	

@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:47:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/26 21:42:32 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/30 13:42:43 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ void	mandelbrot(t_data *img, double x, double y, t_mlx *mlx)
 	double		tmp_r;
 	
     i = 0;
-		// printf("\nadd mand: %s\n", img->addr);
-		// printf("img mand: %p\n\n", img->img);
-
 	c.r = x / mlx->f.zoom + mlx->f.x_min;
 	c.i = y / mlx->f.zoom + mlx->f.y_min;
 	z.r = 0;
@@ -51,8 +48,4 @@ void	mandelbrot(t_data *img, double x, double y, t_mlx *mlx)
 	}
 	if (!(i == mlx->f.iteration_max))
 		put_pixel(img, x, y, mlx->f.color * i);
-
-		// put_pixel(img, x + WIDTH/2 - mlx->f.zoom, y + HEIGHT/2 - mlx->f.zoom, mlx->f.color * i);
 }
-
-// put_pixel(img, x + WIDTH/2 - f_m.zoom, y + HEIGHT/2 - f_m.zoom, f_m.color * i);

@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:25:21 by tas               #+#    #+#             */
-/*   Updated: 2022/12/25 16:24:43 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/30 13:41:52 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ t_fractal   init_burningship(t_mlx *mlx)
 	mlx->f.image_y = (mlx->f.y_max - mlx->f.y_min);
     return (mlx->f);
 }
-
-// fprintf(stderr, "x= %f - y = %f", x, y);
 
 void	burningship(t_data *img, double x, double y, t_mlx *mlx)
 {
@@ -50,5 +48,4 @@ void	burningship(t_data *img, double x, double y, t_mlx *mlx)
 	}
 	if (!(i == mlx->f.iteration_max))
 		put_pixel(img, x, y, mlx->f.color * i);
-		// put_pixel(img, x + WIDTH/2 - mlx->f.zoom, y + HEIGHT/2 - mlx->f.zoom, mlx->f.color * i);
 }

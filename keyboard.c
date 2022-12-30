@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:56:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/29 10:22:45 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/30 13:54:35 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,6 @@ int close_win(t_mlx *mlx)
     mlx_loop_end(mlx->mlx);
     return (0);
 }
-
-// int	display_menu(t_mlx *mlx)
-// {
-	// t_data	*img_menu;
-	// int		*w;
-	// int		*h;
-	// 
-	// w = 0;
-	// h = 0;
-	// img_menu->name = ft_strdup(MENU);
-	// img_menu->img = mlx_new_image(mlx->mlx, 500, 500);
-	// img_menu->addr = mlx_get_data_addr(img_menu->img, &img_menu->bits_per_pixel, &img_menu->line_length,
-								// &img_menu->endian);
-	// img_menu->img = mlx_xpm_file_to_image(mlx, MENU, w, h);
-	// mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, img_menu, 100, 100);
-	// return (0);
-// }
 
 int find_fract(t_mlx *mlx)
 {
@@ -51,7 +34,6 @@ int find_fract(t_mlx *mlx)
 
 int	reset_screen(t_mlx *mlx)
 {
-	printf("jjjj\n");
 	mlx_destroy_image(mlx->mlx, mlx->img->img);
 	mlx->img->img = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
 	mlx->img->addr = mlx_get_data_addr(mlx->img->img, &mlx->img->bits_per_pixel, &mlx->img->line_length,
@@ -59,20 +41,30 @@ int	reset_screen(t_mlx *mlx)
 	return (0);
 }
 
-// int	arrow_key(t_mlx *mlx)
-// {
-	
-// }
+int key_fractal_name(int keycode, t_mlx *mlx)
+{
+	char *ptr;
+	char *fractal;
+	 
+	fractal = mlx->f.name;
+	ptr = fractal;
+	if (keycode == 106)
+		fractal = "julia";
+	else if (keycode == 109)
+		fractal = "mandelbrot";
+	else if (keycode == 98)
+		fractal = "burningship";
+	reset_screen(mlx);
+	init_fract(&ptr, mlx, mlx->img);
+	return (0);
+}
+
+
 
 int keypress(int keycode, t_mlx *mlx)
 {
-	mlx->f.help_menu = 0; //pb ici
-    printf("key keyboard = %d\n", keycode);
-	if (!(keycode == 65307 || keycode == 99 || keycode == 122
-		|| keycode == 100 || keycode == 65363 || keycode == 65361 
-		|| keycode == 65362 || keycode == 65364 || keycode == 104))
-			return (1);
-    else if (keycode == 65307)
+	key_fractal_name(keycode, mlx);
+    if (keycode == 65307)
 	{
         close_win(mlx);
 		return(1);	
@@ -111,18 +103,13 @@ int keypress(int keycode, t_mlx *mlx)
 		reset_screen(mlx);	
 		mlx->f.y_min += 0.2;
 	}
-	else if (keycode == 104 && mlx->f.help_menu == 0) //A CHANGER
+	else if (keycode == 104)
 	{
-		printf(">> %d\n", mlx->f.help_menu);
-    	mlx->f.color += mlx->f.color * 1.7;
-		mlx->f.help_menu = 1;
+		draw_menu(mlx);
+		return (0);
 	}
-	else if (keycode == 104 && mlx->f.help_menu == 1)
-	{
-		printf(">> %d\n", mlx->f.help_menu);
-    	mlx->f.color -= mlx->f.color * 1.7;
-		mlx->f.help_menu = 0;
-	}
+	else
+		return (1);
 	find_fract(mlx);
     return (0);
 }
