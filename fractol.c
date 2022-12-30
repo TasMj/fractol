@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:01:08 by tas               #+#    #+#             */
-/*   Updated: 2022/12/30 17:36:35 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/30 23:38:36 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ int	select_fractal(char **argv)
 	else if (ft_strcmp(argv[1], "Julia_3") == 0
 		|| ft_strcmp(argv[1], "julia_3") == 0)
 		return (5);
+	else
+		return (-1);
 	return (0);
 }
 
