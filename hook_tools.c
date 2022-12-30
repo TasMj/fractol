@@ -6,19 +6,19 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:05:15 by tas               #+#    #+#             */
-/*   Updated: 2022/12/30 15:07:11 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/30 17:45:11 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int close_win(t_mlx *mlx)
+int	close_win(t_mlx *mlx)
 {
-    mlx_loop_end(mlx->mlx);
-    return (0);
+	mlx_loop_end(mlx->mlx);
+	return (0);
 }
 
-int find_fract(t_mlx *mlx)
+int	find_fract(t_mlx *mlx)
 {
 	char	*name;
 
@@ -36,7 +36,7 @@ int	reset_screen(t_mlx *mlx)
 {
 	mlx_destroy_image(mlx->mlx, mlx->img->img);
 	mlx->img->img = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
-	mlx->img->addr = mlx_get_data_addr(mlx->img->img, &mlx->img->bits_per_pixel, &mlx->img->line_length,
-								&mlx->img->endian);
+	mlx->img->addr = mlx_get_data_addr(mlx->img->img, &mlx->img->bits_per_pixel,
+			&mlx->img->line_length, &mlx->img->endian);
 	return (0);
 }

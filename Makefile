@@ -6,7 +6,7 @@
 #    By: tas <tas@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:33:21 by tmejri            #+#    #+#              #
-#    Updated: 2022/12/30 15:12:55 by tas              ###   ########.fr        #
+#    Updated: 2022/12/30 16:24:44 by tas              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,15 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+	@echo "$(GREEN)"
+	@echo "$(GREEN)******************************************************************"
 	@echo "$(GREEN)Project successfully compiled"
+	@echo "$(GREEN)"
+	@echo "$(GREEN)Please enter ./fractol to see the name of the available fractals."
+	@echo "$(GREEN)Then enter ./fractol follow by the name of the fractal chosen."
+	@echo "$(GREEN)When the window is open, press H for help."
+	@echo "$(GREEN)Enjoy :) "
+	@echo "$(GREEN)******************************************************************"
 
 
 clean:

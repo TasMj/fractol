@@ -1,38 +1,43 @@
-// /* ************************************************************************** */
-// /*                                                                            */
-// /*                                                        :::      ::::::::   */
-// /*   mouse.c                                            :+:      :+:    :+:   */
-// /*                                                    +:+ +:+         +:+     */
-// /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
-// /*                                                +#+#+#+#+#+   +#+           */
-// /*   Created: 2022/12/22 10:55:20 by tas               #+#    #+#             */
-// /*   Updated: 2022/12/22 20:38:18 by tas              ###   ########.fr       */
-// /*                                                                            */
-// /* ************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mouse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/30 17:54:47 by tas               #+#    #+#             */
+/*   Updated: 2022/12/30 17:54:47 by tas              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fractol.h"
 
-int mouse_hook(int keycode, t_mlx *mlx)
+int	mouse_hook(int keycode, int x, int y, t_mlx *mlx)
 {
-	printf("key mouse = %d\n", keycode);
-	printf("--> mlx: %p\n", mlx->img->addr);
-
-	if (keycode == 4 && keycode == 2)
+	if ((x >= 0 && x <= WIDTH) && (y >= 0 && y <= HEIGHT))
 	{
-		printf("zoom: %f\n", mlx->f.zoom);
-		reset_screen(mlx);
-    	mlx->f.zoom += 100;
-	}
-    else if ((keycode == 5 || keycode == 4) && mlx->f.zoom > 100)
-	{
-		printf("zoom: %f\n", mlx->f.zoom);
-		reset_screen(mlx);
-    	mlx->f.zoom -= 100;
-	}
-	// if ((souris > 0 && souris < WIDTH) && (souris > 0 && souris < HEIGHT))
-	// {
-		// zoomer sur la position();
-	// }
+		if (keycode == 4)
+		{
+			reset_screen(mlx);
+			mlx->f.zoom += 100;
+		}
+		else if ((keycode == 5) && mlx->f.zoom > 100)
+		{
+			reset_screen(mlx);
+			mlx->f.zoom -= 100;
+		}
+	}	
 	find_fract(mlx);
 	return (0);
 }
+
+// int	hook_expose(t_mlx *mlx, int x, int y)
+// {
+// 	if ((x >= 0 && x <= WIDTH) && (y >= 0 && y <= HEIGHT))
+// 	{
+// 		reset_screen(mlx);
+//     	mlx->f.zoom += 100;
+// 	}	
+// 	find_fract(mlx);
+// 	return (0);
+// }

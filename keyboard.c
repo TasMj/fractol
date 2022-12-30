@@ -6,17 +6,17 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:56:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/30 15:07:15 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/30 17:50:14 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int key_fractal_name(int keycode, t_mlx *mlx)
+int	key_fractal_name(int keycode, t_mlx *mlx)
 {
-	char *ptr;
-	char *fractal;
-	 
+	char	*ptr;
+	char	*fractal;
+
 	fractal = mlx->f.name;
 	ptr = fractal;
 	if (keycode == 106)
@@ -45,23 +45,23 @@ int	key_arrow(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-int key_zoom(int keycode, t_mlx *mlx)
+int	key_zoom(int keycode, t_mlx *mlx)
 {
 	if (keycode == 122)
 	{
 		reset_screen(mlx);
-    	mlx->f.zoom += 100;
+		mlx->f.zoom += 100;
 	}
-    else if (keycode == 100 && mlx->f.zoom > 100)
+	else if (keycode == 100 && mlx->f.zoom > 100)
 	{
 		reset_screen(mlx);
-    	mlx->f.zoom -= 100;
+		mlx->f.zoom -= 100;
 	}
 	find_fract(mlx);
 	return (0);
 }
 
-int keypress(int keycode, t_mlx *mlx)
+int	keypress(int keycode, t_mlx *mlx)
 {
 	if (keycode == 98 || keycode == 106 || keycode == 109)
 		key_fractal_name(keycode, mlx);
@@ -69,12 +69,12 @@ int keypress(int keycode, t_mlx *mlx)
 		key_arrow(keycode, mlx);
 	if (keycode == 100 || keycode == 122)
 		key_zoom(keycode, mlx);
-    if (keycode == 99)
-    	mlx->f.color = mlx->f.color >> 1;
-    else if (keycode == 65307)
+	if (keycode == 99)
+		mlx->f.color = mlx->f.color >> 1;
+	else if (keycode == 65307)
 	{
-        close_win(mlx);
-		return(1);	
+		close_win(mlx);
+		return (1);
 	}
 	else if (keycode == 104)
 	{
@@ -84,5 +84,5 @@ int keypress(int keycode, t_mlx *mlx)
 	else
 		return (1);
 	find_fract(mlx);
-    return (0);
+	return (0);
 }
