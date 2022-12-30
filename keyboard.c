@@ -6,40 +6,11 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 09:56:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/30 13:54:35 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/30 15:07:15 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int close_win(t_mlx *mlx)
-{
-    mlx_loop_end(mlx->mlx);
-    return (0);
-}
-
-int find_fract(t_mlx *mlx)
-{
-	char	*name;
-
-	name = mlx->f.name;
-	if (ft_strcmp(name, "mandelbrot") == 0)
-		calc_fractal(mlx->img, mlx, mandelbrot);
-	else if (ft_strcmp(name, "julia") == 0)
-		calc_fractal(mlx->img, mlx, julia);
-	else if (ft_strcmp(name, "burningship") == 0)
-		calc_fractal(mlx->img, mlx, burningship);
-	return (0);
-}
-
-int	reset_screen(t_mlx *mlx)
-{
-	mlx_destroy_image(mlx->mlx, mlx->img->img);
-	mlx->img->img = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
-	mlx->img->addr = mlx_get_data_addr(mlx->img->img, &mlx->img->bits_per_pixel, &mlx->img->line_length,
-								&mlx->img->endian);
-	return (0);
-}
 
 int key_fractal_name(int keycode, t_mlx *mlx)
 {
@@ -59,21 +30,24 @@ int key_fractal_name(int keycode, t_mlx *mlx)
 	return (0);
 }
 
-
-
-int keypress(int keycode, t_mlx *mlx)
+int	key_arrow(int keycode, t_mlx *mlx)
 {
-	key_fractal_name(keycode, mlx);
-    if (keycode == 65307)
-	{
-        close_win(mlx);
-		return(1);	
-	}
-    else if (keycode == 99)
-	{
-    	mlx->f.color = mlx->f.color >> 1;
-	}
-    else if (keycode == 122)
+	reset_screen(mlx);
+	if (keycode == 65363 && (mlx->img->x >= 0 && mlx->img->x <= WIDTH))
+		mlx->f.x_min += 0.2;
+	else if (keycode == 65361 && (mlx->img->x >= 0 && mlx->img->x <= WIDTH))
+		mlx->f.x_min -= 0.2;
+	else if (keycode == 65362 && (mlx->img->y >= 0 && mlx->img->y <= HEIGHT))
+		mlx->f.y_min -= 0.2;
+	else if (keycode == 65364 && (mlx->img->y >= 0 && mlx->img->y <= HEIGHT))
+		mlx->f.y_min += 0.2;
+	find_fract(mlx);
+	return (0);
+}
+
+int key_zoom(int keycode, t_mlx *mlx)
+{
+	if (keycode == 122)
 	{
 		reset_screen(mlx);
     	mlx->f.zoom += 100;
@@ -83,25 +57,24 @@ int keypress(int keycode, t_mlx *mlx)
 		reset_screen(mlx);
     	mlx->f.zoom -= 100;
 	}
-	else if (keycode == 65363 && (mlx->img->x >= 0 && mlx->img->x <= WIDTH))
+	find_fract(mlx);
+	return (0);
+}
+
+int keypress(int keycode, t_mlx *mlx)
+{
+	if (keycode == 98 || keycode == 106 || keycode == 109)
+		key_fractal_name(keycode, mlx);
+	if (keycode >= 65361 && keycode <= 65364)
+		key_arrow(keycode, mlx);
+	if (keycode == 100 || keycode == 122)
+		key_zoom(keycode, mlx);
+    if (keycode == 99)
+    	mlx->f.color = mlx->f.color >> 1;
+    else if (keycode == 65307)
 	{
-		reset_screen(mlx);
-		mlx->f.x_min += 0.2;
-	}
-	else if (keycode == 65361 && (mlx->img->x >= 0 && mlx->img->x <= WIDTH))
-	{
-		reset_screen(mlx);	
-		mlx->f.x_min -= 0.2;
-	}
-	else if (keycode == 65362 && (mlx->img->y >= 0 && mlx->img->y <= HEIGHT))
-	{
-		reset_screen(mlx);	
-		mlx->f.y_min -= 0.2;
-	}
-	else if (keycode == 65364 && (mlx->img->y >= 0 && mlx->img->y <= HEIGHT))
-	{
-		reset_screen(mlx);	
-		mlx->f.y_min += 0.2;
+        close_win(mlx);
+		return(1);	
 	}
 	else if (keycode == 104)
 	{

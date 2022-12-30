@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/30 12:34:37 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/30 15:11:19 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,24 +100,27 @@ t_fractal   init_burningship(t_mlx *mlx);
 void		burningship(t_data *img, double x, double y, t_mlx *mlx);
 
 // KEYBOARD
-int			close_win(t_mlx *mlx);
+int			key_fractal_name(int keycode, t_mlx *mlx);
+int			key_arrow(int keycode, t_mlx *mlx);
+int			key_zoom(int keycode, t_mlx *mlx);
 int			keypress(int keycode, t_mlx *mlx);
+
+// HOOK TOOLS
+int			close_win(t_mlx *mlx);
 int			find_fract(t_mlx *mlx);
 int			reset_screen(t_mlx *mlx);
 
 // MOUSE
-// int			zoom(t_mlx *mlx, t_data *img);
 int			mouse_hook(int keycode, t_mlx *mlx);
 
 // TOOLS
-int			ft_strcmp(const char *s1, const char *s2);
 void   		put_pixel(t_data *data, int x, int y, int color);
+int			ft_strcmp(const char *s1, const char *s2);
+int			ft_strlen(const char *s);
 char		*ft_strdup(const char *s);
 
 // MENU
 int			display_menu(t_mlx *mlx);
 void	    draw_menu(t_mlx *mlx);
-
-
 
 #endif	
