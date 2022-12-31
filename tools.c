@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:09:20 by tas               #+#    #+#             */
-/*   Updated: 2022/12/30 17:58:00 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/31 19:56:30 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,9 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (1);
 }
 
-int	ft_strlen(const char *s)
+double	v_abs(double n)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*ss;
-	int		i;
-	int		len_s;
-
-	i = 0;
-	len_s = ft_strlen(s);
-	ss = (char *)malloc(sizeof(char) * len_s + 1);
-	if (ss == 0)
-		return (NULL);
-	while (s[i])
-	{
-		ss[i] = s[i];
-		i++;
-	}
-	ss[i] = '\0';
-	return (ss);
+	if (n < 0)
+		n *= -1;
+	return (n);
 }

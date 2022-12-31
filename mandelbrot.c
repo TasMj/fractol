@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 16:47:58 by tas               #+#    #+#             */
-/*   Updated: 2022/12/30 23:31:50 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/31 19:45:08 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	mandelbrot(t_data *img, double x, double y, t_mlx *mlx)
 	c.i = y / mlx->f.zoom + mlx->f.y_min;
 	z.r = 0;
 	z.i = 0;
-	while ((pow(z.r, 2) + pow(z.i, 2)) < 4 && i < mlx->f.iteration_max)
+	while ((z.r * z.r + z.i * z.i) < 4 && i < mlx->f.iteration_max)
 	{
 		tmp_r = z.r;
 		z.r = (z.r * z.r) - (z.i * z.i) + c.r;

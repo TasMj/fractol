@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:08:21 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/30 23:38:41 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/31 16:49:08 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(int argc, char **argv)
 	mlx_hook(mlx.mlx_win, 17, 0, close_win, &mlx);
 	mlx_key_hook(mlx.mlx_win, keypress, &mlx);
 	mlx_mouse_hook(mlx.mlx_win, mouse_hook, &mlx);
-	// mlx_hook(mlx.mlx_win, 6, 1L < 6, hook_expose, &mlx);
 	mlx_loop(mlx.mlx);
 	end_window(&mlx, &img);
 }

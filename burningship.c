@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   burningship.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:25:21 by tas               #+#    #+#             */
-/*   Updated: 2022/12/30 17:15:17 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/31 19:53:58 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ void	burningship(t_data *img, double x, double y, t_mlx *mlx)
 	z.r = 0;
 	c.i = x / mlx->f.zoom + mlx->f.x_min;
 	c.r = y / mlx->f.zoom + mlx->f.y_min;
-	while ((pow(z.r, 2) + pow(z.i, 2)) < 4 && i < mlx->f.iteration_max)
+	while ((z.r * z.r + z.i * z.i) < 4 && i < mlx->f.iteration_max)
 	{
 		tmp_r = z.r;
-		z.r = fabs(pow(z.r, 2) - pow(z.i, 2) + c.r);
-		z.i = fabs(2 * z.i * tmp_r + c.i);
+		z.r = v_abs(((z.r * z.r) - (z.i * z.i)) + c.r);
+		z.i = v_abs(2 * z.i * tmp_r + c.i);
 		i++;
 	}
 	if (!(i == mlx->f.iteration_max))

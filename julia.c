@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:35:32 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/30 23:31:37 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/31 19:44:55 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void	julia(t_data *img, double x, double y, t_mlx *mlx)
 	i = 0;
 	z.r = x / mlx->f.zoom + mlx->f.x_min;
 	z.i = y / mlx->f.zoom + mlx->f.y_min;
-	while ((pow(z.r, 2) + pow(z.i, 2)) < 4 && i < mlx->f.iteration_max)
+	while ((z.r * z.r + z.i * z.i) < 4 && i < mlx->f.iteration_max)
 	{
 		tmp_r = z.r;
-		z.r = pow(z.r, 2) - pow(z.i, 2) + mlx->f.c.r;
+		z.r = (z.r * z.r - z.i * z.i) + mlx->f.c.r;
 		z.i = (2 * z.i * tmp_r) + mlx->f.c.i;
 		i++;
 	}

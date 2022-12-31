@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/30 17:44:01 by tas              ###   ########.fr       */
+/*   Updated: 2022/12/31 19:53:16 by tmejri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FRACTOL_H
 
 # include	<stdlib.h>
-# include	<math.h>
 # include	<unistd.h>
 # include	"./mlx_linux/mlx.h"
 
@@ -106,13 +105,11 @@ int			reset_screen(t_mlx *mlx);
 
 // MOUSE
 int			mouse_hook(int keycode, int x, int y, t_mlx *mlx);
-// int			mouse_hook(int keycode, t_mlx *mlx);
 
 // TOOLS
 void		put_pixel(t_data *data, int x, int y, int color);
 int			ft_strcmp(const char *s1, const char *s2);
-int			ft_strlen(const char *s);
-char		*ft_strdup(const char *s);
+double		v_abs(double n);
 
 // MENU
 int			display_menu(t_mlx *mlx);
