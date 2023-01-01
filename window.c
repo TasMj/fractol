@@ -6,7 +6,7 @@
 /*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 21:43:27 by tas               #+#    #+#             */
-/*   Updated: 2022/12/30 17:58:59 by tas              ###   ########.fr       */
+/*   Updated: 2023/01/01 19:09:01 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init_window(t_mlx *mlx, t_data *img)
 void	end_window(t_mlx *mlx, t_data *img)
 {
 	mlx_destroy_image(mlx->mlx, img->img);
+	mlx_destroy_image(mlx->mlx, mlx->menu.img);
 	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);

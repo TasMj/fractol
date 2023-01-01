@@ -6,7 +6,7 @@
 #    By: tas <tas@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 16:33:21 by tmejri            #+#    #+#              #
-#    Updated: 2022/12/30 16:24:44 by tas              ###   ########.fr        #
+#    Updated: 2023/01/01 16:15:23 by tas              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CC			= gcc
 
 FLAGS		= -Wall -Wextra -Werror -g3
 
-
+# GREEN ="\033[1;32m"
 
 all: $(NAME)
 
@@ -34,7 +34,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 	@echo "$(GREEN)"
-	@echo "$(GREEN)******************************************************************"
+	@echo "${GREEN}******************************************************************"
 	@echo "$(GREEN)Project successfully compiled"
 	@echo "$(GREEN)"
 	@echo "$(GREEN)Please enter ./fractol to see the name of the available fractals."
