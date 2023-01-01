@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmejri <tmejri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tas <tas@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 16:34:45 by tmejri            #+#    #+#             */
-/*   Updated: 2022/12/31 19:53:16 by tmejri           ###   ########.fr       */
+/*   Updated: 2023/01/01 20:17:12 by tas              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void		end_window(t_mlx *mlx, t_data *img);
 // FRACTAL
 int			select_fractal(char **argv);
 void		calc_fractal(t_data *img, t_mlx *mlx, void (*funct) ());
+int			annex_init(char **argv, t_mlx *mlx, t_data *img);
 int			init_fract(char **argv, t_mlx *mlx, t_data *img);
 
 // MANDELBROT
@@ -104,6 +105,8 @@ int			find_fract(t_mlx *mlx);
 int			reset_screen(t_mlx *mlx);
 
 // MOUSE
+int			zoom_in(int x, int y, t_mlx *mlx);
+int			zoom_out(int x, int y, t_mlx *mlx);
 int			mouse_hook(int keycode, int x, int y, t_mlx *mlx);
 
 // TOOLS
