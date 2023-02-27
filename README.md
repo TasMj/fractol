@@ -1,5 +1,5 @@
 # Fractol
-Fractal generator. (Mandelbrot, Julia, Burningship)
+Fractal generator
 
 ## 1) set up
 git clone the repository and enter `make` in the terminal.
